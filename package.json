@@ -1,0 +1,28 @@
+{
+  "name": "svg-explorer-outline",
+  "displayName": "SVG Explorer & Outline",
+  "description": "Adds [] badge for .svg files in Explorer and provides native Outline navigation for SVG documents.",
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.7.0",
+    "vitest": "^3.0.0"
+  }
+}
