@@ -5,7 +5,8 @@ import { SvgDocumentSymbolProvider } from './providers/svgDocumentSymbolProvider
 import { SvgFileDecorationProvider } from './providers/svgFileDecorationProvider';
 
 const SVG_DOCUMENT_SELECTOR: vscode.DocumentSelector = [
-  { pattern: '**/*.[sS][vV][gG]' },
+  { scheme: 'file', pattern: '**/*.[sS][vV][gG]' },
+  { scheme: 'vscode-remote', pattern: '**/*.[sS][vV][gG]' },
 ];
 
 export function activate(context: vscode.ExtensionContext): void {

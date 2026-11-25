@@ -3,8 +3,14 @@
   "displayName": "SVG Explorer & Outline",
   "description": "Adds [] badge for .svg files in Explorer and provides native Outline navigation for SVG documents.",
   "version": "0.1.0",
+  "publisher": "lazyy11",
   "engines": {
     "vscode": "^1.85.0"
+  },
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": true
+    }
   },
   "categories": [
     "Other"

@@ -39,7 +39,8 @@ describe('extension entry', () => {
     expect(mockRegisterFileDecorationProvider).toHaveBeenCalledTimes(1);
     expect(mockRegisterDocumentSymbolProvider).toHaveBeenCalledTimes(1);
     expect(mockRegisterDocumentSymbolProvider.mock.calls[0][0]).toEqual([
-      { pattern: '**/*.[sS][vV][gG]' },
+      { scheme: 'file', pattern: '**/*.[sS][vV][gG]' },
+      { scheme: 'vscode-remote', pattern: '**/*.[sS][vV][gG]' },
     ]);
     expect(subscriptions).toEqual([decoDisposable, symDisposable]);
     expect(() => deactivate()).not.toThrow();
@@ -48,11 +49,15 @@ describe('extension entry', () => {
   it('declares onStartupFinished activation and compiled extension entry in package.json', () => {
     const pkgPath = path.resolve(__dirname, '../package.json');
     const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8')) as {
+      publisher?: string;
       activationEvents?: string[];
       main?: string;
+      capabilities?: { untrustedWorkspaces?: { supported?: boolean } };
     };
 
+    expect(pkg.publisher).toBe('lazyy11');
     expect(pkg.activationEvents).toContain('onStartupFinished');
     expect(pkg.main).toBe('./out/extension.js');
+    expect(pkg.capabilities?.untrustedWorkspaces?.supported).toBe(true);
   });
 });
