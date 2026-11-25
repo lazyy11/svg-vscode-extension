@@ -25,17 +25,27 @@ npm test
      - 在编辑器中修改 `id` 或增删元素，Outline 自动实时更新；
      - 打开 `examples/malformed.svg` 或在 `demo.svg` 中删去 `</svg>`，Outline 安全清空且扩展不崩溃；补回标签后大纲立即恢复。
 
-> 截图占位目录：`docs/images/`（在 Extension Development Host 中验证后可将截图保存为 `vscode-svg-badge.png` 与 `vscode-svg-outline.png`）。
+> 运行效果图见第 2 节。
 
 ---
 
-## 2. 原生 VSCode 行为对照
+## 2. 原生 VSCode 行为对照与真实运行效果
 
 在未启用本扩展（且无第三方 XML/SVG 语言插件）的原生 VSCode 中：
 - **Explorer**：`.svg` 文件旁没有附加标识，仅显示普通文件名。
 - **Outline**：打开 `.svg` 文件时 VSCode 默认归类为 `xml` 语言，但原生不提供符号解析，Outline 面板显示 `No symbols found in document 'demo.svg'`。
 
-启用本扩展后，Explorer 自动展示 `[]` 标记，Outline 自动呈现完整嵌套元素树并支持点击跳转源码。
+启用本扩展后，Explorer 自动展示 `[]` 标记，Outline 自动呈现完整嵌套元素树并支持点击跳转源码：
+
+### A.1 Explorer 文件标记效果
+![SVG Explorer 文件标记效果](./images/vscode-svg-badge.png)
+
+*图 1：`demo.svg` 与 `malformed.svg` 右侧显示 `[]` 标记；普通文本文件 `notes.txt`、普通目录 `.vscode` 及同名 `.svg` 目录 `fake.svg` 均无标记，原文件名和文件内容保持不变。*
+
+### A.2 SVG 原生大纲与源码定位效果
+![SVG 大纲与源码定位效果](./images/vscode-svg-outline.png)
+
+*图 2：左下角 Outline 完整展示 `svg#canvas → g#flowchart → g#node-start → (rect#start, text)` 等嵌套层级，无 `id` 元素显示标签名（`text`、`circle`）；点击 `rect#start` 后编辑器精准定位并高亮第 12 行源码。*
 
 ---
 
