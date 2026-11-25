@@ -19,7 +19,8 @@ npm test
 3. 在新窗口中打开本仓库的 `examples/` 目录进行验证：
    - **A.1 Explorer 文件标记**：左侧资源管理器中 `demo.svg` 与 `malformed.svg` 右侧显示 `[]` 标记；`notes.txt` 与目录 `fake.svg/` 不显示标记；磁盘文件名与内容均未被修改。
    - **A.2 Outline 大纲与定位**：
-     - 打开 `examples/demo.svg`，展开左侧 **Outline** 视图，可见 `svg#canvas → g#flowchart → (g#node-start → (rect#start, text), line#arrow-1, circle)` 嵌套树；
+     - 打开 `examples/demo.svg`（本仓库已在 `examples/.vscode/settings.json` 中配置 `"workbench.editorAssociations": { "*.svg": "default" }`，确保新版 VSCode 直接以原生 **Text Editor** 打开 `.svg`；若在其他工作区遇到默认打开为图片预览，请点击右上角 `Text Editor v` → **Configure default editor for '*.svg'... → Text Editor**，切勿仅做一次性 `Open With`，否则 VSCode 1.144 点击 Outline 时内部 `openEditor` 仍会按默认图片预览解析而无法跳转光标）；
+     - 展开左侧 **Outline** 视图，可见 `svg#canvas → g#flowchart → (g#node-start → (rect#start, text), line#arrow-1, circle)` 嵌套树；
      - 点击任意节点（如 `rect#start` 或 `text`），右侧编辑器光标精准定位到对应元素的开始标签；
      - 在编辑器中修改 `id` 或增删元素，Outline 自动实时更新；
      - 打开 `examples/malformed.svg` 或在 `demo.svg` 中删去 `</svg>`，Outline 安全清空且扩展不崩溃；补回标签后大纲立即恢复。
