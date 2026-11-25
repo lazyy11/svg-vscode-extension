@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Sample SVG for Explorer [] badge and Outline navigation verification -->
-<svg id="canvas" xmlns="http://www.w3.org/2000/svg" width="800" height="600">
+<!-- Ignored fake tag inside comment: <rect id="comment-fake" /> -->
+<svg
+  id="canvas"
+  xmlns="http://www.w3.org/2000/svg"
+  data-note="a > b / c"
+  width="800"
+  height="600"
+>
   <g id="flowchart">
     <g id="node-start">
       <rect id="start" x="120" y="100" width="160" height="60" fill="#e8f4fd" />

@@ -291,12 +291,11 @@ flowchart TD
 #### 注册选择器
 ```ts
 const SVG_DOCUMENT_SELECTOR: vscode.DocumentSelector = [
-  { pattern: '**/*.svg' },
-  { pattern: '**/*.SVG' }
+  { pattern: '**/*.[sS][vV][gG]' },
 ];
 ```
 > [!NOTE]
-> 使用 glob `pattern` 而非 `language: 'svg'`，可兼容原生 VSCode 默认将 `.svg` 识别为 `xml` 语言，也兼容用户已安装其他 SVG 语法高亮插件的情况。
+> 使用大小写不敏感的 glob `pattern`（`**/*.[sS][vV][gG]`）而非 `language: 'svg'`，既可匹配 `.svg` / `.SVG` / `.Svg` 任意大小写后缀，又兼容原生 VSCode 默认将 `.svg` 识别为 `xml` 语言以及已安装第三方 SVG 插件的场景。
 
 #### 节点转换与图标映射
 - **名称格式**：
@@ -325,7 +324,7 @@ export function activate(context: vscode.ExtensionContext): void {
     vscode.window.registerFileDecorationProvider(decorationProvider);
   const symbolDisposable =
     vscode.languages.registerDocumentSymbolProvider(
-      [{ pattern: '**/*.svg' }, { pattern: '**/*.SVG' }],
+      [{ pattern: '**/*.[sS][vV][gG]' }],
       symbolProvider
     );
 
